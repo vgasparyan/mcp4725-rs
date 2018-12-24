@@ -1,6 +1,6 @@
-#`Rust MC4725 Driver`
+# `Rust MC4725 Driver`
 
-This is a platform agnostic Rust driver for the MCP4725, based on the
+> This is a platform agnostic Rust driver for the MCP4725, based on the
 [`embedded-hal`](https://github.com/japaric/embedded-hal) traits.
 
 
