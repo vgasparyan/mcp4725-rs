@@ -12,19 +12,17 @@ with non-volatile memory (EEPROM).
 
 Datasheet: http://ww1.microchip.com/downloads/en/DeviceDoc/22039d.pdf
 
-
 ## Status
 
-- [x] Support  generation of DAC output using Fast Mode Write Command
-- [ ] Support other modes
+- [x] Support generation of DAC output using Fast Mode Write Command
+- [x] Support writing DAC Input register and EEPROM
+- [x] Support RESET command
 - [x] Test on Raspberry Pi
-
 
 ## Examples
 Build the example on Raspberry PI
 
 cargo build --examples
-
 
 ## License
 

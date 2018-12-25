@@ -45,10 +45,26 @@ where
     }
 
     ///write dac register, fast mode
-    pub fn write_dac_register(&mut self, input_code: u16) -> Result<(), E> {
+    pub fn write_dac_register_fast(&mut self, input_code: u16) -> Result<(), E> {
         let b1 = (input_code >> 8) as u8;
         let b2 = (input_code & 0xFF) as u8;
         self.i2c.write(self.address, &[b1, b2])?;
+        Ok(())
+    }
+
+    ///write dac register
+    pub fn write_dac_register(&mut self, input_code: u16) -> Result<(), E> {
+        let b1 = (input_code >> 4) as u8;
+        let b2 = ((input_code << 4) & 0xFF) as u8;
+        self.i2c.write(self.address, &[0x40, b1, b2])?;
+        Ok(())
+    }
+
+    ///write dac register and eeprom
+    pub fn write_dac_register_eeprom(&mut self, input_code: u16) -> Result<(), E> {
+        let b1 = (input_code >> 4) as u8;
+        let b2 = ((input_code << 4) & 0xFF) as u8;
+        self.i2c.write(self.address, &[0x60, b1, b2])?;
         Ok(())
     }
 
@@ -61,11 +77,11 @@ where
         Ok(val)
     }
 
-    ///set DAC output to specified value. Value rage is [0-4095] which corresponds
-    ///to 0-VDD voltage
+    ///set DAC output to specified value using fast mode.
+    ///Value range is [0-4095], which corresponds to [0-VDD] voltage
     pub fn set_dac_value(&mut self, val: u16) -> Result<(), E> {
         let dac_code = val & 0xFFF;
-        self.write_dac_register(dac_code)?;
+        self.write_dac_register_fast(dac_code)?;
         Ok(())
     }
 
@@ -73,5 +89,12 @@ where
     pub fn get_dac_value(&mut self) -> Result<u16, E> {
         let v = self.read_dac_register()?;
         Ok(v)
+    }
+
+    ///performs internal reset, after this event, the device uploads
+    ///the contents of the EEPROM into the DAC register
+    pub fn reset(&mut self) -> Result<(), E> {
+        self.i2c.write(self.address, &[0x06])?;
+        Ok(())
     }
 }
