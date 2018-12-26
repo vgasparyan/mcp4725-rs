@@ -1,5 +1,5 @@
 [package]
-authors = ["Vigen Gasparyan <vigen_gasparyan@yahoo.com"]
+authors = ["Vigen Gasparyan <vigen_gasparyan@yahoo.com>"]
 categories = ["embedded", "hardware-support", "no-std"]
 description = "Platform agnostic Rust driver for the Microchip MCP3425 ADC."
 keywords = ["mcp4725", "microchip", "driver", "dac", "embedded-hal-driver"]
