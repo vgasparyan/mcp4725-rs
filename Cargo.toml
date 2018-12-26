@@ -1,12 +1,14 @@
 [package]
+authors = ["Vigen Gasparyan <vigen_gasparyan@yahoo.com"]
+categories = ["embedded", "hardware-support", "no-std"]
+description = "Platform agnostic Rust driver for the Microchip MCP3425 ADC."
+keywords = ["mcp4725", "microchip", "driver", "dac", "embedded-hal-driver"]
+license = "MIT OR Apache-2.0"
+readme = "README.md"
 name = "mcp4725-rs"
+repository = "https://github.com/vgasparyan/mcp4725-rs"
 version = "0.1.0"
 edition = "2018"
-license = "MIT OR Apache-2.0"
-description = "Platform agnostic Rust driver for the Microchip MCP3425 ADC."
-readme = "README.md"
-keywords = ["mcp4725", "microchip", "driver", "dac", "embedded-hal-driver"]
-categories = ["embedded", "hardware-support", "no-std"]
 
 [dependencies]
 embedded-hal = "0.2"
@@ -14,5 +16,3 @@ embedded-hal = "0.2"
 [dev-dependencies]
 linux-embedded-hal = "0.2"
 
-[profile.release]
-lto = true
