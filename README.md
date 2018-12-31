@@ -1,6 +1,6 @@
-[![crates.io](https://img.shields.io/crates/v/mcp4725.svg)](https://crates.io/crates/mcp4725)
+[![crates.io](https://img.shields.io/crates/v/mcp4725-rs.svg)](https://crates.io/crates/mcp4725-rs)
 
-# `Rust MC4725 Driver`
+# `Rust MCP4725 Driver`
 
 > This is a platform agnostic Rust driver for the MCP4725, based on the
 [`embedded-hal`](https://github.com/japaric/embedded-hal) traits.
